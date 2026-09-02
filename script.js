@@ -1,23 +1,40 @@
 //model
 let minNum = 1;
-let upperNum = "4";
-let lowerNum = "3";
+let upperNum = 0;
+let lowerNum = 0;
 let poeng = 0;
+let answer = null;
+
 //view
 pageView();
 function pageView() {
   krokoapp.innerHTML = /*html*/ `
   <div>
     <h2>Poeng: ${poeng}</h2>
-    <p id="tall1">${upperNum}</p>
-    <input>
-    <p id="tall2">${lowerNum}</p>
+    <p>${upperNum}</p>
+    <input oninput="answer=this.value">
+    <p>${lowerNum}</p>
     <button onclick="submitButton()">Submit</button>
-    <button onclick="resetButton()">Reset</button>
+    <button onclick="numberFunction()">Reset</button>
   </div>
     `;
 }
 
-//controller
+//controller;
 
-function resetButton() {}
+function submitButton() {
+  if (upperNum === lowerNum && answer === "=") {
+    poeng++;
+  }
+  pageView();
+}
+
+function numberFunction() {
+  upperNum = numberGen();
+  lowerNum = numberGen();
+  pageView();
+}
+
+function numberGen() {
+  return Math.floor(Math.random() * 10) + 1;
+}
