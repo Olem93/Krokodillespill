@@ -23,9 +23,17 @@ function pageView() {
 //controller;
 
 function submitButton() {
+  if (answer == null) return;
   if (upperNum === lowerNum && answer === "=") {
     poeng++;
+  } else if (upperNum > lowerNum && answer === ">") {
+    poeng++;
+  } else if (upperNum < lowerNum && answer === "<") {
+    poeng++;
+  } else {
+    poeng--;
   }
+  answer = null;
   pageView();
 }
 
